@@ -63,9 +63,15 @@ addFriendForm.addEventListener('submit', (e) => {
     // > create a new friend, with a "name" property that
     // is populated from `formData.get('name')` and a
     // "satisfied" property with an initial value of 0
+    const newFriend = {
+        name: formData.get('name'),
+        satisfied: 0,
+    };
 
     // > add the new friend to the friends array
+    friends.push(newFriend);
 
+    message = `You invited ${newFriend.name}!`;
     // > set the message state to let the user know
     // they invited a new friend to the festival, include the friend's
     // name in the message
@@ -73,6 +79,8 @@ addFriendForm.addEventListener('submit', (e) => {
     addFriendForm.reset();
 
     // > call the display functions that need to re-display
+    displayMessage();
+    displayFriends();
 });
 
 sayGoodbyeButton.addEventListener('click', () => {
@@ -93,9 +101,9 @@ function displayMessage() {
 function displayMushrooms() {
     mushroomContainer.innerHTML = '';
 
-    for (const mushroom of mushrooms) {
-        const mushroomEl = renderMushroom(mushroom);
-        mushroomContainer.append(mushroomEl);
+    for (let i = 0; i < mushrooms.length; i++) {
+        const newMushroom = renderMushroom(mushrooms[i]);
+        mushroomContainer.append(newMushroom);
     }
 
     // > loop the mushrooms
