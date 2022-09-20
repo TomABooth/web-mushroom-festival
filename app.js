@@ -135,6 +135,10 @@ function displayFriends() {
             // b. increase friend.satisfied by 1
             // c. set a message that the friend enjoyed the mushroom,
             //    include the friend name and mushroom type in the message
+            else {
+                const fedMushroom = mushrooms.pop();
+                friend.satisfied++;
+                message = `${friend.name} enjoyed the ${fedMushroom.type}!`;
 
             displayMessage();
             displayMushrooms();
