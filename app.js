@@ -70,7 +70,7 @@ addFriendForm.addEventListener('submit', (e) => {
 
     // > add the new friend to the friends array
     friends.push(newFriend);
-
+    message = `You invited ${newFriend.name}!`;
     // > set the message state to let the user know
     // they invited a new friend to the festival, include the friend's
     // name in the message
