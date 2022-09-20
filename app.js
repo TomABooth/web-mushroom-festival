@@ -63,6 +63,10 @@ addFriendForm.addEventListener('submit', (e) => {
     // > create a new friend, with a "name" property that
     // is populated from `formData.get('name')` and a
     // "satisfied" property with an initial value of 0
+    const newFriend = {
+        name: formData.get('name'),
+        satisfied: 0,
+    };
 
     // > add the new friend to the friends array
 
