@@ -78,11 +78,16 @@ addFriendForm.addEventListener('submit', (e) => {
     addFriendForm.reset();
 
     // > call the display functions that need to re-display
+    displayMessage();
+    displayFriends();
 });
 
 sayGoodbyeButton.addEventListener('click', () => {
     const stillHungry = [];
     for (const friend of friends) {
+        if (friend.satisfied < 3) {
+            stillHungry.push(friend);
+        }
         // > if the friend is not fully satisfied, push
         // them into the stillHungry array
     }
