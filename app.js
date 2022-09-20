@@ -91,6 +91,10 @@ function displayMessage() {
 
 function displayMushrooms() {
     mushroomContainer.innerHTML = '';
+    for (let i = 0; i < mushrooms.length; i++) {
+        const newMushroom = renderMushroom(mushrooms[i]);
+        mushroomContainer.append(newMushroom);
+    }
 
     // > loop the mushrooms
     // create a mushroom element using the renderMushroom function
