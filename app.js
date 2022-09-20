@@ -70,6 +70,7 @@ addFriendForm.addEventListener('submit', (e) => {
 
     // > add the new friend to the friends array
     friends.push(newFriend);
+
     message = `You invited ${newFriend.name}!`;
     // > set the message state to let the user know
     // they invited a new friend to the festival, include the friend's
@@ -102,6 +103,7 @@ function displayMessage() {
 
 function displayMushrooms() {
     mushroomContainer.innerHTML = '';
+
     for (let i = 0; i < mushrooms.length; i++) {
         const newMushroom = renderMushroom(mushrooms[i]);
         mushroomContainer.append(newMushroom);
@@ -120,25 +122,23 @@ function displayFriends() {
 
         friendEl.addEventListener('click', () => {
             // > handle the three possible outcomes:
-            // 1. No mushrooms, set a message to go hunt for more
             if (mushrooms.length === 0) {
                 message = `No mushrooms! Go hunt!`;
                 displayMessage();
-            }
-
-            // 2. Friend is already fully satisfied (3), set a message to pick another friend
-            else if (friend.satisfied === 3) {
+            } else if (friend.satisfied === 3) {
                 message = `${friend.name} is fully satisfied. Pick another Friend!`;
+            } else {
+                const fedMushroom = mushrooms.pop();
+                friend.satisfied++;
+                message = `${friend.name} enjoyed the ${fedMushroom.type}!`;
             }
+            // 1. No mushrooms, set a message to go hunt for more
+            // 2. Friend is already fully satisfied (3), set a message to pick another friend
             // 3. Feed friend mushroom:
             // a. "pop" a mushroom off the mushrooms array
             // b. increase friend.satisfied by 1
             // c. set a message that the friend enjoyed the mushroom,
             //    include the friend name and mushroom type in the message
-            else {
-                const fedMushroom = mushrooms.pop();
-                friend.satisfied++;
-                message = `${friend.name} enjoyed the ${fedMushroom.type}!`;
 
             displayMessage();
             displayMushrooms();
